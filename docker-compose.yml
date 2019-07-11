@@ -1,0 +1,14 @@
+version: '3'
+services:
+  web-components:
+    build: .
+    ports:
+      - 8642:3000
+    volumes:
+      - .:/app
+      - node_modules:/app/node_modules
+    command: bash -c 'yarn && yarn start'
+    tty: true
+volumes:
+  node_modules:
+    driver: 'local'
