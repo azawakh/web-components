@@ -1,4 +1,8 @@
 class MyDateElement extends HTMLElement {
+  private callbackStr = 'my-date element is connected';
+
+  public now: Date;
+
   constructor() {
     super();
     this.now = new Date();
@@ -8,7 +12,10 @@ class MyDateElement extends HTMLElement {
   }
 
   connectedCallback() {
-    console.log('my-date element is connected');
+    const callback = document.createElement('div');
+    callback.setAttribute('id', 'callback');
+    callback.innerHTML = this.callbackStr;
+    document.body.appendChild(callback);
   }
 
   template() {

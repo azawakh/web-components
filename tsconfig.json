@@ -1,18 +1,13 @@
 {
-  "target": "ESNEXT",
-  "module": "ESNext",
-  "sourceMap": true,
   "compilerOptions": {
+    "target": "ESNEXT",
+    "module": "ESNext",
+    "sourceMap": true,
     "strict": true,
-    "baseUrl": ".",
-    "outDir": "./lib/",
-    "lib": [ "es2015" ]
-  },
-  "include": [
-    "./src/**/*"
-  ],
-  "exclude": [
-    ".git",
-    "node_modules"
-  ]
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true
+  }
 }

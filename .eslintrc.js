@@ -16,17 +16,9 @@ module.exports = {
     '@typescript-eslint/camelcase': ['error', { properties: 'never' }]
   },
   env: {
-    browser: true,
     node: true,
     es6: true,
     commonjs: true,
     jest: true
-  },
-  settings: {
-    'import/resolver': {
-      node: {
-        extensions: ['.ts', '.d.ts', '.tsx', '.js']
-      }
-    }
   }
 };

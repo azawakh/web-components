@@ -12,13 +12,19 @@ document.addEventListener('DOMContentLoaded', () => {
   {
     const app = document.getElementById('app');
     const platformElm = document.createElement('p');
-    platformElm.innerHTML = platform.name;
-    app.appendChild(platformElm);
+    if (platform.name) {
+      platformElm.innerHTML = platform.name;
+    }
+    if (app) {
+      app.appendChild(platformElm);
+    }
   }
 
   {
     const app = document.getElementById('app');
     const myApp = document.createElement('my-app');
-    app.appendChild(myApp);
+    if (app) {
+      app.appendChild(myApp);
+    }
   }
 });

@@ -1,6 +1,4 @@
 const { resolve } = require('path');
-const webpack = require('webpack');
-const UglifyJSPlugin = require('terser-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const src = resolve(`${__dirname}/src`);
@@ -9,14 +7,14 @@ const dist = resolve(`${__dirname}/dist`);
 module.exports = {
   devtool: '#inline-source-map',
   context: src,
-  entry: './js/index.js',
+  entry: './js/index.ts',
   output: {
     path: dist,
     filename: 'budle.js'
   },
   resolve: {
     modules: [src, 'node_modules'],
-    extensions: ['.js', '.jsx', '.json']
+    extensions: ['.ts', '.tsx', '.js', '.jsx', '.json']
   },
   devServer: {
     contentBase: dist,
@@ -25,7 +23,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.ts?$/,
         exclude: /node_modules/,
         use: [
           {
@@ -33,8 +31,15 @@ module.exports = {
             options: {
               presets: [['@babel/preset-env']]
             }
-          }
+          },
+          { loader: 'ts-loader' }
         ]
+      },
+      {
+        enforce: 'pre',
+        test: /\.ts?$/,
+        exclude: /node_modules/,
+        use: [{ loader: 'eslint-loader' }]
       }
     ]
   },
